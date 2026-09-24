@@ -2,7 +2,7 @@
 
 Automatically fills and submits our Google Forms surveys. You put the answers in an Excel file, run one command, and the tool types them in for you — one by one, with human-like delays so nothing looks suspicious.
 
-Each form (theme) already has **300 pre-generated responses** ready to go. You just need to install the tool and run it.
+Each form (theme) has **300 pre-generated responses**. Each person submits **15 responses** (~35–45 min).
 
 ---
 
@@ -14,7 +14,7 @@ playwright install
 cd forms/theme5
 python3 ../../qol_submitter.py submit --config form_config \
     --file synthetic_responses.xlsx --sheet Responses \
-    --start 0 --limit 10 --review --delay-min 10 --delay-max 20
+    --start 0 --limit 15 --review --delay-min 10 --delay-max 20
 ```
 
 ---
@@ -202,61 +202,62 @@ python ..\..\qol_submitter.py submit --config form_config --file synthetic_respo
 
 ---
 
-### Step 3: Full Auto-Submit (Hands-Off)
+### Step 3: Submit Your 15 Responses
 
-Once you've verified the test run works, submit all 300 responses automatically:
+Once you've verified the test run works, submit your assigned 15 responses. You'll be told which `--start` number to use (see the table below). For example, if you're **Person 1**:
 
 **Mac:**
 ```bash
-python3 ../../qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 0 --stop-on-fail
+python3 ../../qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 0 --limit 15 --stop-on-fail
 ```
 
 **Windows:**
 ```cmd
-python ..\..\qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 0 --stop-on-fail
+python ..\..\qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 0 --limit 15 --stop-on-fail
 ```
 
-> **Note:** This takes a while! The tool waits **2.5–3 minutes between each submission** on purpose so they don't look automated. 300 responses ≈ 12–15 hours. You can leave your laptop running overnight.
+> **Note:** The tool waits **2.5–3 minutes between each submission** so they don't look automated. 15 responses ≈ 35–45 minutes.
 
 > **Safe to restart:** If your laptop sleeps or you close the terminal, just run the same command again. It automatically skips rows that were already submitted.
 
 ---
 
-### Step 4: Submit a Specific Range of Rows
+### Step 4: Which Rows Are Yours?
 
-If you want to split the work with someone else, use `--start` and `--limit`:
+Each person submits **15 rows**. Find your assigned number and use the matching `--start` value:
 
-**Person A — rows 0 to 99:**
+| Person | Rows | `--start` value | Command (just change `--start`) |
+|--------|------|-----------------|-------------------------------|
+| Person 1 | 0–14 | `--start 0` | `--start 0 --limit 15` |
+| Person 2 | 15–29 | `--start 15` | `--start 15 --limit 15` |
+| Person 3 | 30–44 | `--start 30` | `--start 30 --limit 15` |
+| Person 4 | 45–59 | `--start 45` | `--start 45 --limit 15` |
+| Person 5 | 60–74 | `--start 60` | `--start 60 --limit 15` |
+| Person 6 | 75–89 | `--start 75` | `--start 75 --limit 15` |
+| Person 7 | 90–104 | `--start 90` | `--start 90 --limit 15` |
+| Person 8 | 105–119 | `--start 105` | `--start 105 --limit 15` |
+| Person 9 | 120–134 | `--start 120` | `--start 120 --limit 15` |
+| Person 10 | 135–149 | `--start 135` | `--start 135 --limit 15` |
+| Person 11 | 150–164 | `--start 150` | `--start 150 --limit 15` |
+| Person 12 | 165–179 | `--start 165` | `--start 165 --limit 15` |
+| Person 13 | 180–194 | `--start 180` | `--start 180 --limit 15` |
+| Person 14 | 195–209 | `--start 195` | `--start 195 --limit 15` |
+| Person 15 | 210–224 | `--start 210` | `--start 210 --limit 15` |
+| Person 16 | 225–239 | `--start 225` | `--start 225 --limit 15` |
+| Person 17 | 240–254 | `--start 240` | `--start 240 --limit 15` |
+| Person 18 | 255–269 | `--start 255` | `--start 255 --limit 15` |
+| Person 19 | 270–284 | `--start 270` | `--start 270 --limit 15` |
+| Person 20 | 285–299 | `--start 285` | `--start 285 --limit 15` |
+
+**Full command example — say you're Person 5:**
 
 Mac:
 ```bash
-python3 ../../qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 0 --limit 100 --stop-on-fail
+python3 ../../qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 60 --limit 15 --stop-on-fail
 ```
 Windows:
 ```cmd
-python ..\..\qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 0 --limit 100 --stop-on-fail
-```
-
-**Person B — rows 100 to 199:**
-
-Mac:
-```bash
-python3 ../../qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 100 --limit 100 --stop-on-fail
-```
-Windows:
-```cmd
-python ..\..\qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 100 --limit 100 --stop-on-fail
-```
-
-**Person C — rows 200 to 299:**
-
-Mac:
-```bash
-python3 ../../qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 200 --limit 100 --stop-on-fail
-```
-Windows:
-```cmd
-python ..\..\qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 200 --limit 100 --stop-on-fail
+python ..\..\qol_submitter.py submit --config form_config --file synthetic_responses.xlsx --sheet Responses --start 60 --limit 15 --stop-on-fail
 ```
 
 ---
